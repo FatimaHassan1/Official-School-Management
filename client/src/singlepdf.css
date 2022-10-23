@@ -1,0 +1,129 @@
+.main-pdf-containers{
+    background: white;
+    width: 100vw;
+    margin-left: -33px;
+    margin-bottom: -12px;
+    padding-left: 30px;
+    
+}
+.pdfcontent{
+    background-color: white;
+    width: 803px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -12px;
+    font-size: 12px;
+}
+.first-container{
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 30px;
+    display: flex;
+    align-items: flex-start;
+}
+.pdfcontent-first{
+    display: flex;
+    align-items: center;
+    width: 70%;
+}
+.pdfcontent-first > img{
+    width: 80px;
+    height: 80px;
+    margin-right: 10px;
+}
+.pdfcontent-first > div{
+    display: flex;
+    flex-direction: column;
+}
+.pdfcontent-first > div > span:nth-child(1){
+    font-weight: 500;
+}
+
+.pdfcontent-first > div > span{
+    line-height: 24px;
+    font-size: 10px;
+    width: 80%;
+    line-height: 15px;
+    margin-bottom: 3px;
+}
+
+.pdfcontent-second{
+    display: flex;
+    flex-direction: column;
+    
+}
+.pdfcontent-second > span{
+    line-height: 20px;
+    font-size: 10px;
+
+}
+
+
+.second-container h1{
+    font-size: 28px;
+    margin-top: 38px;
+    text-align: center;
+}
+
+.ul-container{
+    display: flex;
+}
+.ul-container > ul{
+    width: 50%;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.ul-container > ul > li {
+    display: flex;
+}
+.ul-container > ul > li > .labels{
+    color: black;
+    width: 30%;
+}
+.ul-container > ul > li > .values{
+    color: black;
+    font-size: 12px;
+}
+
+.description{
+    border: solid 1px black;
+    height: 100px;
+    padding: 15px 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.sign-container{
+    margin-right: 20px;
+    margin-left: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.approval-container{
+    width: 30%;
+    margin-top: 80px;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top: dotted 1px black;
+    padding-top: 10px;
+}
+.approval-container > label{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+
+.pdfcontent button{
+    margin-top: 20px;
+    border: none;
+    background-color: darkblue;
+    color: white;
+    padding: 10px 20px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}

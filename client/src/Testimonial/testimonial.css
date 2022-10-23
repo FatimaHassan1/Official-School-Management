@@ -1,0 +1,12 @@
+.testinonial-heading {
+    margin: 20px;
+}
+
+.add-testimonial input{
+    margin-right: 20px;
+    margin-top: 20px;
+    width: 25%;
+}
+.add-testimonial button{
+    display: block;
+}

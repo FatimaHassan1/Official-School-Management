@@ -1,0 +1,7 @@
+.website-information-div{
+    display: inline-block;
+    width: 45%;
+}
+.website-information-div > label{
+    width: 40%;
+}
