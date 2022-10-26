@@ -30,7 +30,7 @@ mongoose.connect(URI, {
 myapp.use(require("./router/authtwo"));
 myapp.use(require("./router/auth"));
 
-const PORT = process.env.PORT || 8000
+const PORT = process.env.PORT || 80
 
 // production
 if (process.env.NODE_ENV === 'production') {
