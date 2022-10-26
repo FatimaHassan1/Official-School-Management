@@ -14,8 +14,8 @@ myapp.use(express.json());
 // app.use(sessionMiddleWare)
 
 // connect mongodb
-const URI = process.env.MONGODB_URL
-// const URI =  "mongodb://localhost:27017/ldap"
+// const URI = process.env.MONGODB_URL
+const URI =  "mongodb://localhost:27017/ldap"
 
 // Connect to mongod
 mongoose.connect(URI, {
