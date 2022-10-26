@@ -1,7 +1,7 @@
 import axios from "axios" ;
 
 export const addpurchaseform = async(data) => {
-    await axios.post(`/addpurchase` , data)
+    return await axios.post(`/addpurchase` , data)
 }
 
 export const getpurchaseform = async() => {
