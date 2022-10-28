@@ -7,7 +7,7 @@ const path = require("path");
 var livereload = require("livereload");
 var connectLiveReload = require("connect-livereload");
 
-myapp.use("/", cors());
+myapp.use(cors());
 myapp.use(express.json());
 // app.use(sessionMiddleWare)
 
@@ -32,7 +32,7 @@ mongoose.connect(
 myapp.use(require("./router/authtwo"));
 myapp.use(require("./router/auth"));
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 80;
 
 // production
 if (process.env.NODE_ENV === "production") {
