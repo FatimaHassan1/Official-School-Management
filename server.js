@@ -32,15 +32,15 @@ mongoose.connect(
 myapp.use(require("./router/authtwo"));
 myapp.use(require("./router/auth"));
 
-const PORT = process.env.PORT || 80;
+const PORT = process.env.PORT || 4000;
 
 // production
-if (process.env.NODE_ENV === "production") {
-  myapp.use(express.static("client/build"));
-  myapp.get("/*", (req, res) => {
-    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-  });
-}
+// if (process.env.NODE_ENV === "production") {
+//   myapp.use(express.static("client/build"));
+//   myapp.get("*", (req, res) => {
+//     res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+//   });
+// }
 
 // const test = myapp.listen(PORT , "0.0.0.0")
 // console.log(test)
