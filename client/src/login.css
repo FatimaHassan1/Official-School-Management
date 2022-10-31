@@ -1,51 +1,53 @@
-.login_page_container{
-    display: flex;
-    background: white;
+.login_page_container {
+  display: flex;
+  background: white;
 }
-.login_divider{
-    width: 60%;
-    background: #840000;
-    height: 100vh;
-    display: flex;
-    align-items: center;
+.login_divider {
+  width: 60%;
+  background: #840000;
+  height: 100vh;
+  display: flex;
+  align-items: center;
 }
-.login_divider_content{
-    width: 70%;
-    margin: auto;
-    color: white;
+.login_divider_content {
+  width: 70%;
+  margin: auto;
+  color: white;
 }
-.login_divider_content > h1{
-    line-height: 40px;
-    font-size: 30px;
+.login_divider_content > h1 {
+  line-height: 40px;
+  font-size: 30px;
 }
-.login_divider_content > h3{
-    font-size: 15px;
-    width: 35%;
-    font-weight: 600;
-    margin-bottom: 25px;
-    padding-bottom: 10px;
-    margin-top: 15px;
-    border-bottom: 1px solid white;
+.login_divider_content > h3 {
+  font-size: 15px;
+  width: 35%;
+  font-weight: 600;
+  margin-bottom: 25px;
+  padding-bottom: 10px;
+  margin-top: 15px;
+  border-bottom: 1px solid white;
 }
-.login_divider_content > p{
-    line-height: 30px;
-    margin-bottom: 30px;
+.login_divider_content > p {
+  line-height: 30px;
+  margin-bottom: 30px;
 }
-.login_page{
-    max-width: 40%;
-    width: 35%;
-    color: #444;
-    padding: 0 15px;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    background: transparent;
+.login_page {
+  max-width: 40%;
+  width: 35%;
+  color: #444;
+  padding: 0 15px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  background: transparent;
 }
-.login_page > input , button{
-    padding: 8px;
-    margin-bottom: 20px;
-    padding: 8px;
-    margin-bottom: 20px;
-    outline: none;
-    border: solid 1px black;
+.login_page > input,
+button,
+.login_page > select {
+  padding: 8px;
+  margin-bottom: 20px;
+  padding: 8px;
+  margin-bottom: 20px;
+  outline: none;
+  border: solid 1px black;
 }

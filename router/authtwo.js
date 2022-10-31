@@ -310,8 +310,8 @@ router.route("/postuser").post((req, res) => {
   const ou = req.body.ou;
   const userdetail = req.body.userdetail;
   const mypassword = req.body.mypassword;
-  try {
-    async function auth() {
+  async function auth() {
+    try {
       // auth with admin
       let options = {
         ldapOpts: { url: "ldap://118.172.176.25:389" },
@@ -325,7 +325,6 @@ router.route("/postuser").post((req, res) => {
       };
 
       let user = await authenticate(options);
-      console.log(user);
       const saveldapuser = new ldapModel({
         ou,
         userdetail,
@@ -333,13 +332,11 @@ router.route("/postuser").post((req, res) => {
       });
       saveldapuser.save();
       res.status(201).json(saveldapuser);
+    } catch (err) {
+      res.status(401).json({ message: "Invalid Credentials" });
     }
-    auth();
-  } catch (err) {
-    console.log(err);
-  } finally {
-    console.log("Hope it will solve");
   }
+  auth();
 });
 
 module.exports = router;

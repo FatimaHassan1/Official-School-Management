@@ -29,7 +29,8 @@
     "multer": "^1.4.5-lts.1",
     "ngrok": "^4.3.3",
     "pm2": "^5.2.0",
-    "reload": "^3.2.0"
+    "reload": "^3.2.0",
+    "universal-cookie": "^4.0.4"
   },
   "author": "",
   "license": "ISC",
