@@ -3,9 +3,11 @@ import {NavLink} from 'react-router-dom';
 import {getpurchaseform , deletepurchaserecord , approvepurchase , rejectpurchase} from '../service/purchaseApi';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import TeacherSidebar from '../TeacherRedirect/TeacherSidebar';
+import Cookies from "universal-cookie/cjs/Cookies";
+const cookie = new Cookies();
 
 function Purchase(){
+    const user_role = cookie.get("user_role");
 
     const [getpurchase , setGetPurchase] = useState([])
 
@@ -37,7 +39,7 @@ function Purchase(){
     return(
         <>
             <div className='dashboard-container'>
-                <TeacherSidebar />
+                <SideNavigation />
                 <div className='content'>
                     
                     <NavLink exact to="/addpurchase"><button id='add-student'>Add Stationary Request</button></NavLink>
@@ -50,7 +52,10 @@ function Purchase(){
                                     <th>Qty</th>
                                     <th>Price/Qty</th>
                                     <th>Status</th>
-                                    <th>Actions</th>
+                                    {user_role === "Admin" && ( 
+                                        <th>Actions</th>
+                                    )}
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -64,11 +69,14 @@ function Purchase(){
                                                 <td>{parameter.qty}</td>
                                                 <td>{parameter.price}</td>
                                                 <td>{parameter.status}</td>
-                                                <td className='action-buttons'>
-                                                    <button onClick={() => deletePurchase(parameter._id)}>Delete</button>
-                                                    <button onClick={() => approvePurchase(parameter._id)}>Approve</button>
-                                                    <button onClick={() => rejectPurchase(parameter._id)}>Reject</button>
-                                                </td>
+                                                {user_role === "Admin" && ( 
+                                                    <td className='action-buttons'>
+                                                        <button onClick={() => deletePurchase(parameter._id)}>Delete</button>
+                                                        <button onClick={() => approvePurchase(parameter._id)}>Approve</button>
+                                                        <button onClick={() => rejectPurchase(parameter._id)}>Reject</button>
+                                                    </td>
+                                                )}
+
                                             </tr>
                                         )
                                     })

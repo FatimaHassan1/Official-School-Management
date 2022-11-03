@@ -2,9 +2,6 @@ import React , {useState} from 'react';
 import {AddStudentData} from '../service/studentApi';
 import { NavLink} from 'react-router-dom';
 import SideNavigation from '../components/SideNavigation';
-import StudentSidebar from '../StudentRedirect/StudentSidebar';
-
-
 
 function AddNewStudent(){
 
@@ -33,7 +30,7 @@ function AddNewStudent(){
     return(
         <>
         <div id='requestforms-container'>
-            <StudentSidebar />
+            <SideNavigation />
             <div id='requestforms-content'>
                 <form className='form-container' enctype='multipart/form-data'>
                     <div  id='edit-user-first'>

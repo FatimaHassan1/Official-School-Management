@@ -11,8 +11,7 @@ import "./App.css";
 import Modal from 'react-modal';
 import axios from "axios";
 import {addPresentEvent} from './service/api';
-import StudentSidebar from './StudentRedirect/StudentSidebar';
-
+import sideBar from './components/SideNavigation'
 
 Modal.setAppElement('#root');
 const customStyles = {
@@ -79,7 +78,7 @@ function LeaveForms() {
 
     return (
       <div class='dashboard-container'>
-        <StudentSidebar />
+        <sideBar />
         <div class='content'>
           <div className="App">
 

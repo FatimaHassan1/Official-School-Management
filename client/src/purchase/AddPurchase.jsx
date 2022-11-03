@@ -2,7 +2,6 @@ import SideNavigation from '../components/SideNavigation';
 import {NavLink} from 'react-router-dom';
 import { useState } from 'react';
 import {addpurchaseform} from '../service/purchaseApi';
-import TeacherSidebar from '../TeacherRedirect/TeacherSidebar';
 
 function AddPurchase(){
 
@@ -29,7 +28,7 @@ function AddPurchase(){
     return(
         <>
             <div className='dashboard-container'>
-                <TeacherSidebar />
+                <SideNavigation />
                 <div className='content'>
 
                     <form>

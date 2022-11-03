@@ -10,6 +10,8 @@ import { Calendar, dateFnsLocalizer } from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import "react-datepicker/dist/react-datepicker.css";
 import {NavLink} from 'react-router-dom';
+import { useHistory } from "react-router-dom";
+
 
 function Home() {
   const [number1 , Setnumber1] = useState();
@@ -20,6 +22,8 @@ function Home() {
   let counter2 = 0;
   let counter3 = 0;
   let counter4 = 0;
+
+  const history = useHistory()
 
   useEffect(()=>{
       setInterval( () => {
@@ -81,6 +85,8 @@ function Home() {
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide notification__icon dark:text-slate-500"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
               </div>
 
+              <button style={{marginTop:'10px'}} onClick={()=>{history.push('/')}}>logout</button>
+
               <div className='user'>
                 <img src={userp}/>
               </div>
@@ -103,7 +109,6 @@ function Home() {
                 
                 <div className='cards'>
                   <div className='card-box'>
-                    <NavLink style={{textDecoration:'none'}} exact to='/calendar'>
                         <div className='card-box-child-1'>
                         <i style={{fontSize:'30px', color:'#1E40AF'}} class="fa fa-user" aria-hidden="true"></i>
                         <div className='card-box-child1-percent child1-percent-greater'>
@@ -118,7 +123,6 @@ function Home() {
                         <div className='card-box-line'>
                         Check leaves records
                         </div>
-                    </NavLink>
                     <div></div>
                   </div>
                 </div>

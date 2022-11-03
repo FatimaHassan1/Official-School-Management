@@ -36,23 +36,23 @@ function Login() {
       username.mypassword === "admin123"
     ) {
       cookie.set("user_role", "Admin");
-      history.push("/executivedashbaord");
+      history.push("/home");
     } else {
       try {
         const res = await axios.post(`/postuser`, username);
         cookie.set("user_role", res.data?.ou);
         switch (username.ou) {
           case "Executive":
-            history.push("/executivedashbaord");
+            history.push("/home");
             break;
           case "K1":
-            history.push("/studentdashbaord");
+            history.push("/home");
             break;
           case "Teacher":
-            history.push("/teacherdashboard");
+            history.push("/home");
             break;
           case "Finance":
-            history.push("/financedashbaord");
+            history.push("/home");
             break;
           default:
             history.push("/");

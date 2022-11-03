@@ -1,13 +1,12 @@
 import SideNavigation from '../components/SideNavigation';
 import './mywebsite.css';
 import {NavLink} from 'react-router-dom';
-import TeacherSidebar from '../TeacherRedirect/TeacherSidebar';
 
 function MyWebsite(){
     return(
         <>
             <div className='dashboard-container'>
-                <TeacherSidebar />
+                <SideNavigation />
                 <div className='content'>
                     
                     <NavLink to='/addmywebsite'><button id='add-student'>Add New Record</button></NavLink>

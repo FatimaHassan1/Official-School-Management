@@ -18,7 +18,7 @@ const nodemon = require("nodemon");
 
 // Events
 
-router.route("/calendar").post((req, res) => {
+router.route("/calendar").post(async(req, res) => {
   const title = req.body.title;
   const start = req.body.start;
   const end = req.body.end;
@@ -31,30 +31,29 @@ router.route("/calendar").post((req, res) => {
     allDay,
   });
 
-  newEventDocument.save();
+  await newEventDocument.save();
 });
 
-router.route("/getpresent").get((req, res) => {
-  eventPlaylist.find().then((found) => res.json(found));
+router.route("/getpresent").get(async(req, res) => {
+  await eventPlaylist.find().then((found) => res.json(found));
 });
 
 // Student Database
-router.route("/addstudent").post((req, res) => {
+router.route("/addstudent").post(async(req, res) => {
   const addstu = req.body;
   console.log(addstu);
   const studentDocument = new studentModel(addstu);
 
-  studentDocument.save();
+  await studentDocument.save();
   res.status(201).json(studentDocument);
 });
 
-router.route("/students").get((req, res) => {
-  studentModel.find().then((found) => res.json(found));
+router.route("/students").get(async(req, res) => {
+  await studentModel.find().then((found) => res.json(found));
 });
 
-router.route("/getsingle/:reid").get((req, res) => {
-  console.log(req.params.reid);
-  studentModel.find({ _id: req.params.reid }).then((found) => res.json(found));
+router.route("/getsingle/:reid").get(async(req, res) => {
+  await studentModel.find({ _id: req.params.reid }).then((found) => res.json(found));
 });
 
 router.route("/studentedit/:reid").put(async (req, res) => {
@@ -68,7 +67,7 @@ router.route("/studentedit/:reid").put(async (req, res) => {
   }
 });
 
-router.route("/deletestudent/:id").delete(async (req, res) => {
+router.route("/deletestudent/:id").delete(async(req, res) => {
   try {
     await studentModel.deleteOne({ _id: req.params.id });
     res.status(200).json({ message: "User Deleted Successfully" });
@@ -79,17 +78,17 @@ router.route("/deletestudent/:id").delete(async (req, res) => {
 
 // Stationary
 
-router.route("/addstationary").post((req, res) => {
+router.route("/addstationary").post(async(req, res) => {
   const addstation = req.body;
   console.log(addstation);
   const stationaryDocument = new stationaryModel(addstation);
 
-  stationaryDocument.save();
+  await stationaryDocument.save();
   res.status(201).json(stationaryDocument);
 });
 
-router.route("/getstationary").get((req, res) => {
-  stationaryModel.find().then((found) => res.json(found));
+router.route("/getstationary").get(async(req, res) => {
+  await stationaryModel.find().then((found) => res.json(found));
 });
 
 router.route("/deletestationary/:id").delete(async (req, res) => {
@@ -122,17 +121,16 @@ router.route("/rejectstationary/:appid").put(async (req, res) => {
 });
 
 // Purchase
-router.route("/addpurchase").post((req, res) => {
+router.route("/addpurchase").post(async(req, res) => {
   const addpurchaserecord = req.body;
   console.log(addpurchaserecord);
-  const purchaseDocument = new purchaseModel(addpurchaserecord);
-
-  purchaseDocument.save();
+  const purchaseDocument =  new purchaseModel(addpurchaserecord);
+  await purchaseDocument.save();
   res.status(201).json(purchaseDocument);
 });
 
-router.route("/getpurchase").get((req, res) => {
-  purchaseModel.find().then((found) => res.json(found));
+router.route("/getpurchase").get(async(req, res) => {
+  await purchaseModel.find().then((found) => res.json(found));
 });
 
 router.route("/deletepurchase/:id").delete(async (req, res) => {
@@ -165,17 +163,17 @@ router.route("/rejectpurchase/:appid").put(async (req, res) => {
 });
 
 // classroom
-router.route("/classroom").post((req, res) => {
+router.route("/classroom").post(async(req, res) => {
   const classRoomDocs = req.body;
   console.log(classRoomDocs);
   const ClassRoomDocument = new ClassroomModel(classRoomDocs);
 
-  ClassRoomDocument.save();
+  await ClassRoomDocument.save();
   res.status(201).json(ClassRoomDocument);
 });
 
-router.route("/classroomget").get((req, res) => {
-  ClassroomModel.find().then((found) => res.json(found));
+router.route("/classroomget").get(async(req, res) => {
+  await ClassroomModel.find().then((found) => res.json(found));
 });
 
 router.route("/deleteClass/:id").delete(async (req, res) => {
@@ -188,17 +186,17 @@ router.route("/deleteClass/:id").delete(async (req, res) => {
 });
 
 // Levels
-router.route("/level").post((req, res) => {
+router.route("/level").post(async(req, res) => {
   const levelsdocs = req.body;
   console.log(levelsdocs);
   const Levelsdocument = new LevelsModel(levelsdocs);
 
-  Levelsdocument.save();
+  await Levelsdocument.save();
   res.status(201).json(Levelsdocument);
 });
 
-router.route("/levelget").get((req, res) => {
-  LevelsModel.find().then((found) => res.json(found));
+router.route("/levelget").get(async(req, res) => {
+  await LevelsModel.find().then((found) => res.json(found));
 });
 
 router.route("/deletelevel/:id").delete(async (req, res) => {
@@ -211,17 +209,17 @@ router.route("/deletelevel/:id").delete(async (req, res) => {
 });
 
 // Subject
-router.route("/subject").post((req, res) => {
+router.route("/subject").post(async(req, res) => {
   const Subjectdocs = req.body;
   console.log(Subjectdocs);
   const SubjectDocument = new SubjectModel(Subjectdocs);
 
-  SubjectDocument.save();
+  await SubjectDocument.save();
   res.status(201).json(SubjectDocument);
 });
 
-router.route("/subjectget").get((req, res) => {
-  SubjectModel.find().then((found) => res.json(found));
+router.route("/subjectget").get(async(req, res) => {
+  await SubjectModel.find().then((found) => res.json(found));
 });
 
 router.route("/deletesubject/:id").delete(async (req, res) => {
@@ -234,17 +232,17 @@ router.route("/deletesubject/:id").delete(async (req, res) => {
 });
 
 // External
-router.route("/external").post((req, res) => {
+router.route("/external").post(async(req, res) => {
   const ExternalDocs = req.body;
   console.log(ExternalDocs);
   const ExternalDocument = new ExternalModel(ExternalDocs);
 
-  ExternalDocument.save();
+  await ExternalDocument.save();
   res.status(201).json(ExternalDocument);
 });
 
-router.route("/externalget").get((req, res) => {
-  ExternalModel.find().then((found) => res.json(found));
+router.route("/externalget").get(async(req, res) => {
+  await ExternalModel.find().then((found) => res.json(found));
 });
 
 router.route("/deleteexternal/:id").delete(async (req, res) => {
@@ -257,17 +255,17 @@ router.route("/deleteexternal/:id").delete(async (req, res) => {
 });
 
 // Website Menu
-router.route("/websitemenu").post((req, res) => {
+router.route("/websitemenu").post(async(req, res) => {
   const WebsiteMenuDocs = req.body;
   console.log(WebsiteMenuDocs);
   const WebsiteMenuDocument = new WebsiteMenuModel(WebsiteMenuDocs);
 
-  WebsiteMenuDocument.save();
+  await WebsiteMenuDocument.save();
   res.status(201).json(WebsiteMenuDocument);
 });
 
-router.route("/websitemenuget").get((req, res) => {
-  WebsiteMenuModel.find().then((found) => res.json(found));
+router.route("/websitemenuget").get(async(req, res) => {
+  await WebsiteMenuModel.find().then((found) => res.json(found));
 });
 
 router.route("/deletewebsitemenu/:id").delete(async (req, res) => {
@@ -281,17 +279,17 @@ router.route("/deletewebsitemenu/:id").delete(async (req, res) => {
 
 // Testimonial
 // Student Database
-router.route("/addtestimonial").post((req, res) => {
+router.route("/addtestimonial").post(async(req, res) => {
   const addtesti = req.body;
   console.log(addtesti);
   const addTestimonialRecord = new TestimonialModel(addtesti);
 
-  addTestimonialRecord.save();
+  await addTestimonialRecord.save();
   res.status(201).json(addTestimonialRecord);
 });
 
-router.route("/testimonials").get((req, res) => {
-  TestimonialModel.find().then((found) => res.json(found));
+router.route("/testimonials").get(async(req, res) => {
+  await TestimonialModel.find().then((found) => res.json(found));
 });
 
 router.route("/deletetestimonial/:id").delete(async (req, res) => {
@@ -305,7 +303,7 @@ router.route("/deletetestimonial/:id").delete(async (req, res) => {
 
 // get user details
 
-router.route("/postuser").post((req, res) => {
+router.route("/postuser").post(async(req, res) => {
   const department = req.body.department;
   const ou = req.body.ou;
   const userdetail = req.body.userdetail;
@@ -330,7 +328,7 @@ router.route("/postuser").post((req, res) => {
         userdetail,
         mypassword,
       });
-      saveldapuser.save();
+      await saveldapuser.save();
       res.status(201).json(saveldapuser);
     } catch (err) {
       res.status(401).json({ message: "Invalid Credentials" });

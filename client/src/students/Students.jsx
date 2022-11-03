@@ -6,7 +6,6 @@ import { useState } from 'react';
 import Modal from 'react-modal';
 import {PDFExport , savePDF} from "@progress/kendo-react-pdf";
 import ModalStudent from './ModalStudent';
-import StudentSidebar from '../StudentRedirect/StudentSidebar';
 
 Modal.setAppElement('#root');
 
@@ -67,7 +66,7 @@ function Students(){
         <>
                         
         <div className='dashboard-container'>
-            <StudentSidebar />
+            <SideNavigation />
             <div className='content'>
                 <h1>Students Database</h1>
                 <NavLink exact to="/addstudents"><button id='add-student'>Add New Student</button></NavLink>

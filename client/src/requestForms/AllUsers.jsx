@@ -3,7 +3,10 @@ import { useState } from 'react';
 import {getUsers , deleteUserRecord , approveapi , getsingleuser , rejectapi} from '../service/api';
 import {NavLink} from 'react-router-dom';
 import DatePicker from "react-datepicker";
-import StudentSidebar from '../StudentRedirect/StudentSidebar';
+import SideBar from '../components/SideNavigation'
+import Cookies from "universal-cookie/cjs/Cookies";
+const cookie = new Cookies();
+
 
 const newUsers = [{
     name : '',
@@ -14,6 +17,7 @@ const newUsers = [{
 }]
 
 function AllUsers(){
+    const user_role = cookie.get("user_role");
 
     const [user , setUser] = useState(newUsers);
 
@@ -66,9 +70,10 @@ function AllUsers(){
 
     return(
         <div id='requestforms-container'>
-            <StudentSidebar />
+            <SideBar />
             <div id='requestforms-content'>
                 <h2>REQUEST FORMS</h2>
+                
                 <NavLink exact to='/add'><button id='add-user-link'>Add Form</button></NavLink>
                 <table id='request-table'>
                     <thead>
@@ -79,6 +84,7 @@ function AllUsers(){
                             <th>Description</th>
                             <th>Status</th>
                             <th>Actions</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
@@ -92,13 +98,20 @@ function AllUsers(){
                                             <td>{user.subject}</td>
                                             <td>{user.description}</td>
                                             <td>{user.status}</td>
-                                            <td className='action-buttons'>
-                                                <NavLink to={`/edit/${user._id}`}><button>Edit</button></NavLink>
-                                                <button onClick={()=>deleteUser(user._id)}>Delete</button>
-                                                <button onClick={()=>updaterecord(user._id)}>Approve</button>
-                                                <button onClick={()=>rejectrecord(user._id)}>Reject</button>
-                                                <NavLink to={`/pdf/${user._id}`}><button>Print</button></NavLink>
-                                            </td>
+                                            
+                                                <td className='action-buttons'>
+                                                    <NavLink to={`/edit/${user._id}`}><button>Edit</button></NavLink>
+                                                    {user_role === "Admin" && (
+                                                        <>
+                                                            <button onClick={()=>deleteUser(user._id)}>Delete</button>
+                                                            <button onClick={()=>updaterecord(user._id)}>Approve</button>
+                                                            <button onClick={()=>rejectrecord(user._id)}>Reject</button>
+                                                        </>
+                                                    )}
+                                                    <NavLink to={`/pdf/${user._id}`}><button>Print</button></NavLink>
+                                                </td>
+                                            
+
                                         </tr>
                                     </>
                                 )

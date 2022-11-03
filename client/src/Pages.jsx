@@ -22,16 +22,15 @@ import AddTestimonial from "./Testimonial/AddTestimonial";
 import WebsiteInformation from "./WebsiteInformation/WebsiteInformation";
 import AllPage from "./Page/AllPage";
 import addPage from "./Page/addPage";
-import Lunch from "./LunchMenu/Lunch";
 import MyWebsite from "./MyWebsite/MyWebsite";
 import AddMyWebsite from "./MyWebsite/AddMyWebsite";
 import Subject from "./Subject/Subjects";
 import Levels from "./Levels/Levels";
 import Classrooms from "./Classrooms/Classrooms";
-import Banner from "./Banner/Banner";
 import StudentRedirect from "./StudentRedirect/StudentRedirect";
 import TeacherREdirect from "./TeacherRedirect/TeacherRedirect";
 import ExecutiveREdirect from "./ExecutiveRedirect";
+import adminRedirect from "./adminRedirect";
 import FinanceREdirect from "./FinanceRedirect";
 import TestApiComponent from "./TestApiComponent";
 import Login from "./Login";
@@ -44,6 +43,7 @@ function Pages() {
         <Route exact path="/home" component={Home} />
         <Route exact path="/testapicomponent" component={TestApiComponent} />
         <Route exact path="/executivedashbaord" component={ExecutiveREdirect} />
+        <Route exact path="/admin" component={adminRedirect} />
         <Route exact path="/financedashbaord" component={FinanceREdirect} />
         <Route exact path="/studentdashbaord" component={StudentRedirect} />
         <Route exact path="/teacherdashboard" component={TeacherREdirect} />
@@ -61,7 +61,7 @@ function Pages() {
         <Route exact path="/addstationary" component={AddStationary} />
         <Route exact path="/purchase" component={Purchase} />
         <Route exact path="/addpurchase" component={AddPurchase} />
-        <Route exact path="/Websitemenu" component={WebsiteMenu} />
+        <Route exact path="/websitemenu" component={WebsiteMenu} />
         <Route exact path="/externalLinks" component={ExternalLinks} />
         <Route exact path="/testimonial" component={Testimonial} />
         <Route exact path="/addtestimonial" component={AddTestimonial} />
@@ -72,13 +72,11 @@ function Pages() {
         />
         <Route exact path="/allpage" component={AllPage} />
         <Route exact path="/addpage" component={addPage} />
-        <Route exact path="/lunch" component={Lunch} />
         <Route exact path="/mywebsite" component={MyWebsite} />
         <Route exact path="/addmyWebsite" component={AddMyWebsite} />
         <Route exact path="/subject" component={Subject} />
         <Route exact path="/levels" component={Levels} />
         <Route exact path="/classrooms" component={Classrooms} />
-        <Route exact path="/banner" component={Banner} />
       </Switch>
     </>
   );

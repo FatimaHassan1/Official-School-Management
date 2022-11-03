@@ -3,26 +3,24 @@ const router = express.Router();
 const presentModel = require("../modals/requestFormSchema");
 
 // Request Forms
-router.route("/addpresent").post((req, res) => {
+router.route("/addpresent").post(async(req, res) => {
   const getpresentdata = req.body;
   const presentdocument = new presentModel(getpresentdata);
 
-  presentdocument.save();
+  await presentdocument.save();
   res.status(201).json(presentdocument);
 });
 
-router.route("/all").get((req, res) => {
-  presentModel.find().then((found) => res.json(found));
+router.route("/all").get(async(req, res) => {
+  await presentModel.find().then((found) => res.json(found));
 });
 
-router.route("/:reid").get((req, res) => {
-  console.log(req.params.reid);
-  presentModel.find({ _id: req.params.reid }).then((found) => res.json(found));
+router.route("/:reid").get(async(req, res) => {
+  await presentModel.find({ _id: req.params.reid }).then((found) => res.json(found));
 });
 
-router.route("/pdf/:reid").get((req, res) => {
-  console.log(req.params.reid);
-  presentModel.find({ _id: req.params.reid }).then((found) => res.json(found));
+router.route("/pdf/:reid").get(async(req, res) => {
+  await presentModel.find({ _id: req.params.reid }).then((found) => res.json(found));
 });
 
 router.route("/:reid").put(async (req, res) => {

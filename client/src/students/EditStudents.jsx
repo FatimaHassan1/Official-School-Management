@@ -2,8 +2,6 @@ import React , {useState , useEffect} from 'react';
 import { NavLink, useParams} from 'react-router-dom';
 import SideNavigation from '../components/SideNavigation';
 import {editStudent , getSingleStudent} from '../service/studentApi';
-import StudentSidebar from '../StudentRedirect/StudentSidebar';
-
 
 function EditStudents(){
 
@@ -38,7 +36,7 @@ function EditStudents(){
     return(
         <>
         <div id='requestforms-container'>
-            <StudentSidebar />
+            <SideNavigation />
             <div id='requestforms-content'>
                 <form className='form-container'>
                     <div  id='edit-user-first'>

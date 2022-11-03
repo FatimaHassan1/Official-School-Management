@@ -2,8 +2,6 @@ import SideNavigation from '../components/SideNavigation';
 import './website.css';
 import {Addwebsitemenu , getAllwebsitemenus , Deletewebsitemenu} from './WebsiteApi';
 import { useState , useEffect } from 'react';
-import TeacherSidebar from '../TeacherRedirect/TeacherSidebar';
-import userp from '../assets/avatar7.png';
 
 function WebsiteMenu(){
 
@@ -45,7 +43,7 @@ function WebsiteMenu(){
     return(
         <>
             <div className='dashboard-container'>
-                <TeacherSidebar />
+                <SideNavigation />
                 <div className='content'>
                     
                     <form className='websitemenu'>

@@ -1,8 +1,7 @@
 import React , {useState} from 'react';
 import {addUserApi} from '../service/api';
 import { NavLink} from 'react-router-dom';
-import StudentSidebar from '../StudentRedirect/StudentSidebar';
-
+import SideBar from '../components/SideNavigation';
 
 function AddUser(){
 
@@ -28,7 +27,7 @@ function AddUser(){
     return(
         <>
         <div id='requestforms-container'>
-            <StudentSidebar />
+            <SideBar />
             <div id='requestforms-content'>
                 <form className='form-container'>
                     <div  id='edit-user-first'>

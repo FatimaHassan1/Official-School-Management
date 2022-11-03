@@ -12,7 +12,6 @@ import Modal from 'react-modal';
 import axios from "axios";
 import {addPresentEvent} from './service/api';
 import SideNavigation from './components/SideNavigation';
-import StudentSidebar from './StudentRedirect/StudentSidebar';
 
 
 Modal.setAppElement('#root');
@@ -80,7 +79,7 @@ function PresentForms() {
 
     return (
       <div class='dashboard-container'>
-        <StudentSidebar />
+        <SideNavigation />
         <div class='content'>
           <div className="App">
 

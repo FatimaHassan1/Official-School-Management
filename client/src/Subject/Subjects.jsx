@@ -2,7 +2,6 @@ import './subject.css';
 import SideNavigation from '../components/SideNavigation';
 import {AddSubject , getAllSubjects , DeleteSubject} from './SubjectApi'
 import { useState , useEffect } from 'react';
-import TeacherSidebar from '../TeacherRedirect/TeacherSidebar';
 
 function Subject(){
 
@@ -45,7 +44,7 @@ function Subject(){
     return(
         <>
             <div className='dashboard-container'>
-                <TeacherSidebar />
+                <SideNavigation />
                 <div className='content'>
                     <form className='external'>
                         <input onChange={onValueChange} name='thai' type='text' placeholder='Subject Name (Thai)' />

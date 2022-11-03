@@ -2,7 +2,6 @@ import './classroom.css';
 import SideNavigation from '../components/SideNavigation';
 import { useState , useEffect} from 'react';
 import {AddClassroom , getAllClasses , DeleteClass} from './classroomApi'
-import TeacherSidebar from '../TeacherRedirect/TeacherSidebar';
 
 function Classrooms(){
 
@@ -47,7 +46,7 @@ function Classrooms(){
     return(
         <>
             <div className='dashboard-container'>
-                <TeacherSidebar />
+                <SideNavigation />
                 <div className='content'>
                     <form className='external'>
                         <input onChange={onValueChange} type='text' placeholder='Level' name='level'/>

@@ -2,7 +2,6 @@ import './level.css';
 import SideNavigation from '../components/SideNavigation';
 import {AddLevel , getAllLevels , DeleteLevel} from './LevelsApi'
 import { useState , useEffect } from 'react';
-import TeacherSidebar from '../TeacherRedirect/TeacherSidebar';
 
 function Levels(){
 
@@ -47,7 +46,7 @@ function Levels(){
     return(
         <>
             <div className='dashboard-container'>
-                <TeacherSidebar />
+                <SideNavigation />
                 <div className='content'>
                     <form className='external'>
                         <input onChange={onValueChange} type='text' placeholder='Level One' name='levelone' />

@@ -3,9 +3,11 @@ import {NavLink} from "react-router-dom";
 import { useEffect } from 'react';
 import { getallstationary , deletestationaryrecord , approvestaionary , rejectstaionary} from '../service/stationaryApi';
 import { useState } from 'react';
-
+import Cookies from "universal-cookie/cjs/Cookies";
+const cookie = new Cookies();
 
 function AllStationary(){
+    const user_role = cookie.get("user_role");
 
     const [stationary , setStationary] = useState([]);
 
@@ -48,7 +50,9 @@ function AllStationary(){
                             <th>Date</th>
                             <th>Description</th>
                             <th>Status</th>
-                            <th>Actions</th>
+                            {user_role === "Admin" && ( 
+                                <th>Actions</th>
+                            )}
                         </tr>
                     </thead>
                     <tbody>
@@ -61,11 +65,14 @@ function AllStationary(){
                                             <td>{parameter.date}</td>
                                             <td> {parameter.backpack ? `= Backpack ${parameter.backpack} , ` : " "} {parameter.laminating ? `= Laminating ${parameter.laminating} ,` : " "} {parameter.brush ? `= Brush ${parameter.brush} ,` : " "}</td>
                                             <td>{parameter.status}</td>
-                                            <td className='action-buttons'>
-                                                <button onClick={() => deletestationary(parameter._id)}>Delete</button>
-                                                <button onClick={() => approvestationary(parameter._id)}>Approve</button>
-                                                <button onClick={() => rejectstationary(parameter._id)}>Reject</button>
-                                            </td>
+                                            {user_role === "Admin" && ( 
+                                                <td className='action-buttons'>
+                                                    <button onClick={() => deletestationary(parameter._id)}>Delete</button>
+                                                    <button onClick={() => approvestationary(parameter._id)}>Approve</button>
+                                                    <button onClick={() => rejectstationary(parameter._id)}>Reject</button>
+                                                </td>
+                                            )}
+
                                         </tr>
                                     </>
                                 )

@@ -1,13 +1,12 @@
 import SideNavigation from '../components/SideNavigation';
 import './websiteinformation.css';
 import {NavLink} from 'react-router-dom';
-import TeacherSidebar from '../TeacherRedirect/TeacherSidebar';
 
 function WebsiteInformation(){
     return(
         <>
             <div className='dashboard-container'>
-                <TeacherSidebar />
+                <SideNavigation />
                 <div className='content'>
                     
                    <form>

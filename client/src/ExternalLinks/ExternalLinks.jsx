@@ -2,7 +2,6 @@ import SideNavigation from '../components/SideNavigation';
 import './external.css';
 import {AddExternal , getAllExternals , DeleteExternal} from './ExternalApi';
 import { useState , useEffect } from 'react';
-import TeacherSidebar from '../TeacherRedirect/TeacherSidebar';
 
 function ExternalLinks(){
 
@@ -45,7 +44,7 @@ function ExternalLinks(){
     return(
         <>
             <div className='dashboard-container'>
-                <TeacherSidebar />
+                <SideNavigation />
                 <div className='content'>
                     <form className='external'>
                         <input onChange={onValueChange} name='th' type='text' placeholder='External Link Th' />

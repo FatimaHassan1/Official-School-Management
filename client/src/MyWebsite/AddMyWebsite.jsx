@@ -1,13 +1,11 @@
 import SideNavigation from '../components/SideNavigation';
 import './mywebsite.css';
-import TeacherSidebar from '../TeacherRedirect/TeacherSidebar';
-
 
 function AddMyWebsite(){
     return(
         <>
             <div className='dashboard-container'>
-                <TeacherSidebar />
+                <SideNavigation />
                 <div className='content'>
                     
                     <h3 className='testinonial-heading'>Add Website</h3>
