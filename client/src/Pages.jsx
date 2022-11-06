@@ -34,6 +34,9 @@ import adminRedirect from "./adminRedirect";
 import FinanceREdirect from "./FinanceRedirect";
 import TestApiComponent from "./TestApiComponent";
 import Login from "./Login";
+import Group from "./Group/Group";
+import LeaveType from "./Leave Type/LeaveType";
+import Payroll from "./Payroll/Payroll";
 
 function Pages() {
   return (
@@ -41,6 +44,9 @@ function Pages() {
       <Switch>
         <Route exact path="/" component={Login} />
         <Route exact path="/home" component={Home} />
+        <Route exact path="/group" component={Group} />
+        <Route exact path="/leavetype" component={LeaveType} />
+        <Route exact path="/payroll" component={Payroll} />
         <Route exact path="/testapicomponent" component={TestApiComponent} />
         <Route exact path="/executivedashbaord" component={ExecutiveREdirect} />
         <Route exact path="/admin" component={adminRedirect} />

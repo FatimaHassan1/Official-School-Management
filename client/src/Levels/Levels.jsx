@@ -80,8 +80,6 @@ function Levels(){
                         </tbody>
                     </table>
                 </div>
-
-                
             </div>
         </>
     )
