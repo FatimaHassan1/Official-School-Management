@@ -9,9 +9,8 @@ const fileUpload = require("express-fileupload");
  ******Routes Initialize******
  ****************************/
 
-
 const admin_users = require("./admin_user");
-
+const student = require("./student");
 
 module.exports = function (app) {
   /****** Added ********/
@@ -28,7 +27,6 @@ module.exports = function (app) {
    *** Routes Use in Express ***
    ****************************/
 
-  
   app.use("/admin_users", admin_users);
-  
+  app.use("/student", student);
 };
