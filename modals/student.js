@@ -55,13 +55,6 @@ const StudentSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
-  action_by: {
-    type: String,
-    trim: true,
-  },
-  action_id: {
-    type: mongoose.Schema.Types.ObjectId,
-  },
   gender: {
     type: String,
     enum: ["Male", "Female"],
@@ -86,14 +79,12 @@ StudentSchema.methods.toJSON = function () {
     "contact_number",
     "biography",
     "status",
-    "action_by",
-    "action_id",
     "gender",
   ]);
   return StudentJson;
 };
 function validateStudent(Student) {
-  const schema = {
+  const schema = Joi.object({
     first_name: Joi.string().required().trim(),
     last_name: Joi.string().allow(null, ""),
     email: Joi.string().required().email().trim(),
@@ -105,10 +96,26 @@ function validateStudent(Student) {
     biography: Joi.string().trim().allow(null, ""),
     status: Joi.boolean().required(),
     gender: Joi.string().valid("Male", "Female").required(),
-  };
-  return Joi.validate(Student, schema);
+  });
+  return schema.validate(Student);
 }
 
+function validateStudentUpdate(Student) {
+  const schema = Joi.object({
+    first_name: Joi.string().required().trim(),
+    last_name: Joi.string().allow(null, ""),
+    email: Joi.string().required().email().trim(),
+    contact_number: Joi.string().trim().allow(null, ""),
+    address: Joi.string().required().trim(),
+    city: Joi.string().required().trim(),
+    state: Joi.string().required().trim(),
+    biography: Joi.string().trim().allow(null, ""),
+    status: Joi.boolean().required(),
+    gender: Joi.string().valid("Male", "Female").required(),
+  });
+  return schema.validate(Student);
+}
 const Student = mongoose.model("Student", StudentSchema);
 exports.Student = Student;
 exports.validateStudent = validateStudent;
+exports.validateStudentUpdate = validateStudentUpdate;

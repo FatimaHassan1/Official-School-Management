@@ -1,9 +1,21 @@
 const express = require("express");
 const router = express.Router();
+const { AdminUser } = require("../modals/admin_user");
+const bcrypt = require("bcryptjs");
 // const presentModel = require("../modals/requestFormSchema");
 
+router.route("/admin").post(async (req, res) => {
+  let adminUser = new AdminUser({
+    name: "IPS",
+    email: "ips@gmail.com",
+  });
+  const salt = await bcrypt.genSalt(10);
+  adminUser.password = await bcrypt.hash(req.body.password, salt);
+  adminUser = await adminUser.save();
+});
+
 // Request Forms
-router.route("/add").post(async(req, res) => {
+router.route("/add").post(async (req, res) => {
   const getpresentdata = req.body;
   const presentdocument = new presentModel(getpresentdata);
 
@@ -11,16 +23,20 @@ router.route("/add").post(async(req, res) => {
   res.status(201).json(presentdocument);
 });
 
-router.route("/all").get(async(req, res) => {
+router.route("/all").get(async (req, res) => {
   await presentModel.find().then((found) => res.json(found));
 });
 
-router.route("/:reid").get(async(req, res) => {
-  await presentModel.find({ _id: req.params.reid }).then((found) => res.json(found));
+router.route("/:reid").get(async (req, res) => {
+  await presentModel
+    .find({ _id: req.params.reid })
+    .then((found) => res.json(found));
 });
 
-router.route("/pdf/:reid").get(async(req, res) => {
-  await presentModel.find({ _id: req.params.reid }).then((found) => res.json(found));
+router.route("/pdf/:reid").get(async (req, res) => {
+  await presentModel
+    .find({ _id: req.params.reid })
+    .then((found) => res.json(found));
 });
 
 router.route("/:reid").put(async (req, res) => {

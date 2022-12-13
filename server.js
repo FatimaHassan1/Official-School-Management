@@ -29,9 +29,16 @@ mongoose.connect(
 );
 
 // get rout
+
+// myapp.use(require("./router/start_up_routes"));
+
+/*** Main Routes File *****/
+require("./router/start_up_routes")(myapp);
 myapp.use(require("./router/authtwo"));
 myapp.use(require("./router/auth"));
-myapp.use(require("./router/start_up_routes"));
+// require("./router/authtwo")(myapp);
+// require("./router/auth")(myapp);
+
 const PORT = process.env.PORT || 4000;
 
 // production
