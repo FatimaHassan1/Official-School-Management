@@ -2,9 +2,10 @@ const express = require("express");
 const router = express.Router();
 const { AdminUser } = require("../modals/admin_user");
 const bcrypt = require("bcryptjs");
+const { authenticate } = require("../middleware/authenticate");
 // const presentModel = require("../modals/requestFormSchema");
 
-router.route("/admin").post(async (req, res) => {
+router.route("/admin").post(authenticate,async (req, res) => {
   let adminUser = new AdminUser({
     name: "IPS",
     email: "ips@gmail.com",

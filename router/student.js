@@ -11,6 +11,7 @@ const delete_student = require("../controllers/student/delete_student");
 register_route({
   router,
   route: "/",
+  auth_required: true,
   post_method: add_student,
 });
 

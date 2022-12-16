@@ -1,6 +1,6 @@
 const { WRONG_HTTP_METHOD } = require("../controllers/common/error_codes");
-// const { authenticate } = require("../middleware/authenticate");
-// const { admin_auth } = require("../middleware/admin_auth");
+const { authenticate } = require("../middleware/authenticate");
+
 
 const register_route = ({
   router = undefined,
@@ -14,13 +14,9 @@ const register_route = ({
 } = {}) => {
   if (router != undefined || route != undefined) {
     let args = [route];
-    // if (auth_required) {
-    //   args.push(authenticate);
-    // }
-
-    // if (admin_auth_required) {
-    //   args.push(admin_auth);
-    // }
+    if (auth_required) {
+      args.push(authenticate);
+    }
 
     if (get_method) {
       router.get(...args, get_method);
