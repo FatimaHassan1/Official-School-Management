@@ -1,18 +1,59 @@
 const express = require("express");
 const router = express.Router();
-const { AdminUser } = require("../modals/admin_user");
+const { AdminUser, validateAdminUserLogin } = require("../modals/admin_user");
 const bcrypt = require("bcryptjs");
 const { authenticate } = require("../middleware/authenticate");
+
+const jwt = require("jsonwebtoken");
 // const presentModel = require("../modals/requestFormSchema");
 
-router.route("/admin").post(authenticate,async (req, res) => {
+router.route("/admin").post(async (req, res) => {
   let adminUser = new AdminUser({
-    name: "IPS",
-    email: "ips@gmail.com",
+    name: req.body.name,
+    email: req.body.email,
   });
   const salt = await bcrypt.genSalt(10);
   adminUser.password = await bcrypt.hash(req.body.password, salt);
   adminUser = await adminUser.save();
+});
+
+router.route("/login").post(async (req, res) => {
+  //validate login Request Body
+  const { error } = validateAdminUserLogin(req.body);
+  if (error) {
+    return res.status(400).json({
+      code: 400,
+      message: error.details[0].message.replace(/\"/g, ""),
+    });
+  }
+  //check Admin User Exist against this email
+  let adminUsers = await AdminUser.findOne({ email: req.body.email });
+  if (!adminUsers) {
+    return res
+      .status(400)
+      .json({ code: 400, message: "Invalid email or password" });
+  }
+  // Match Password
+  const validPassword = await bcrypt.compare(
+    req.body.password,
+    adminUsers.password
+  );
+  if (!validPassword) {
+    return res
+      .status(400)
+      .json({ code: 400, message: "Invalid email or password" });
+  }
+  //Genrate Authentication Token
+  const token = jwt.sign(
+    { _id: adminUsers._id, login_by: "admin_user" },
+    process.env.JWT_SECRET
+  );
+  res.status(200).json({
+    code: 200,
+    message: "Admin login successfully",
+    adminUser: adminUsers,
+    token: token,
+  });
 });
 
 // Request Forms

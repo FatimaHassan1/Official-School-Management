@@ -12,6 +12,7 @@ const fileUpload = require("express-fileupload");
 const admin_users = require("./admin_user");
 const student = require("./student");
 const teacher = require("./teacher");
+const classroom = require("./classroom");
 
 module.exports = function (app) {
   /****** Added ********/
@@ -31,4 +32,5 @@ module.exports = function (app) {
   app.use("/admin_users", admin_users);
   app.use("/student", student);
   app.use("/teacher", teacher);
+  app.use("/classroom", classroom);
 };

@@ -18,24 +18,28 @@ register_route({
 register_route({
   router,
   route: "/",
+  auth_required: true,
   get_method: list_student,
 });
 
 register_route({
   router,
   route: "/detail/:student_id",
+  auth_required: true,
   get_method: detail_student,
 });
 
 register_route({
   router,
   route: "/:student_id",
+  auth_required: true,
   put_method: update_student,
 });
 
 register_route({
   router,
   route: "/:student_id",
+  auth_required: true,
   delete_method: delete_student,
 });
 

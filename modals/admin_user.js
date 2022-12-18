@@ -38,5 +38,14 @@ adminUserSchema.methods.toJSON = function () {
   return adminUserJson;
 };
 
+function validateAdminUserLogin(adminUser) {
+  const schema = Joi.object({
+    email: Joi.string().min(5).max(255).required().email(),
+    password: Joi.string().min(5).max(255).required(),
+  });
+  return schema.validate(adminUser);
+}
+
 const adminUser = mongoose.model("adminUser", adminUserSchema);
 exports.AdminUser = adminUser;
+exports.validateAdminUserLogin = validateAdminUserLogin;
