@@ -13,6 +13,7 @@ const admin_users = require("./admin_user");
 const student = require("./student");
 const teacher = require("./teacher");
 const classroom = require("./classroom");
+const courses = require("./courses");
 
 module.exports = function (app) {
   /****** Added ********/
@@ -33,4 +34,5 @@ module.exports = function (app) {
   app.use("/student", student);
   app.use("/teacher", teacher);
   app.use("/classroom", classroom);
+  app.use("/courses", courses);
 };
